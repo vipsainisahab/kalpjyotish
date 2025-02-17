@@ -129,7 +129,7 @@ class _KundliScreenState extends State<KundliScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Feedback & Support'),
-        backgroundColor: ColorResources.primaryColor,
+        backgroundColor: ThemeColor.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -154,7 +154,7 @@ class _KundliScreenState extends State<KundliScreen> {
                     print('Contact Support submitted: ${_emailController.text}');
                   }
                 },
-                backgroundColor: ColorResources.primaryColor,
+                backgroundColor: ThemeColor.primaryColor,
               ),
             ),
           ],

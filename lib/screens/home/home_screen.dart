@@ -1,110 +1,18 @@
 import 'package:get/get.dart';
 import 'package:new_astro/utils/color_resource.dart';
 import 'package:new_astro/widgets/custom_btn.dart';
-import 'package:new_astro/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
 import '../astro/astro_list_screen.dart';
 import '../kundli/kundli_screen.dart';
-import '../notification/notification_screen.dart';
-import '../test/HomeScreen.dart';
+import 'controller.dart';
 
 class AstroHomeScreen extends StatelessWidget {
+  final controller = Get.put(tag: 'HomeController', HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: Size.fromHeight(100),
-      //   child: Stack(
-      //     clipBehavior: Clip.none, // Allows positioning outside the AppBar bounds
-      //     children: [
-      //       AppBar(
-      //         automaticallyImplyLeading: false,
-      //         flexibleSpace: Container(
-      //         ),
-      //         actions: [
-      //           IconButton(
-      //             icon: Icon(
-      //               Icons.language,
-      //               color: ColorResources.primaryColor,
-      //             ),
-      //             onPressed: () {
-      //               Get.to(()=>HomeScreen2());
-      //             },
-      //           ),
-      //           IconButton(
-      //             icon: Icon(
-      //               Icons.wallet,
-      //               color: ColorResources.primaryColor,
-      //             ),
-      //             onPressed: () {},
-      //           ),
-      //           IconButton(
-      //             icon: Icon(
-      //               Icons.notifications_none,
-      //               color: ColorResources.primaryColor,
-      //             ),
-      //             onPressed: () {
-      //               Navigator.push(
-      //                 context,
-      //                 MaterialPageRoute(builder: (context) => NotificationScreen()),
-      //               );
-      //             },
-      //           ),
-      //         ],
-      //       ),
-      //
-      //       // Positioned circle
-      //       Positioned(
-      //         top: -50,
-      //         left: -50,
-      //         child: Container(
-      //           width: 200,
-      //           height: 200,
-      //           padding: EdgeInsets.only(left: 20),
-      //           decoration: BoxDecoration(
-      //             shape: BoxShape.circle,
-      //             gradient: LinearGradient(
-      //               colors: [
-      //                 Color(0xFFEC868A),
-      //               Color(0xFFF8BD02),
-      //
-      //               ],
-      //               begin: Alignment.topLeft,
-      //               end: Alignment.bottomRight,
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //       Positioned(
-      //         top:70,
-      //           left: 10,
-      //           child:
-      //           Column(
-      //             mainAxisAlignment: MainAxisAlignment.end,
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: [
-      //               Text(
-      //                 'Kalpjyotish',
-      //                 style: TextStyle(
-      //                     color: ColorResources.buttonTextColor,
-      //                     fontSize: 24,
-      //                     fontWeight: FontWeight.bold),
-      //               ),
-      //               Text(
-      //                 'Connect with the best astrologers',
-      //                 style: TextStyle(color: Colors.black, fontSize: 16),
-      //               ),
-      //             ],
-      //           ),
-      //
-      //       ),
-      //     ],
-      //   ),
-      // ),
-
+      backgroundColor: ThemeColor.homeScreenColor,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -190,12 +98,11 @@ class AstroHomeScreen extends StatelessWidget {
                                 children: [
                                   CircleAvatar(
                                     radius: 35,
-                                    backgroundColor:
-                                        ColorResources.primaryColor,
+                                    backgroundColor: ThemeColor.primaryColor,
                                     child: CircleAvatar(
                                       radius: 33,
-                                      backgroundImage: AssetImage(
-                                          'assets/astro$index.jpg'), // Replace with real image
+                                      backgroundImage: NetworkImage(controller
+                                          .image), // Replace with real image
                                     ),
                                   ),
                                   Positioned(
@@ -262,15 +169,36 @@ class AstroHomeScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildServiceCard("assets/images/call.png", 'Call'),
-                      _buildServiceCard("assets/images/chat.png", 'Chat'),
-                      _buildServiceCard("assets/images/video.png", 'Video'),
-                      _buildServiceCard(
-                          "assets/images/stream.png", 'Live Astro'),
-                    ],
+                  Container(
+                    height: Get.size.height * .16,
+                    width: Get.size.width * .95,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF2DAC4),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.15),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildServiceCard(
+                            image: 'assets/images/call.png', name: 'Call'),
+                        _buildServiceCard(
+                            image: 'assets/images/chat.png', name: 'Chat'),
+                        _buildServiceCard(
+                            image: 'assets/images/video.png', name: 'Video'),
+                        _buildServiceCard(
+                            image: 'assets/images/stream.png',
+                            name: 'Live Astro')
+                      ],
+                    ),
                   ),
 
                   // Recommended Astrologers with Horizontal Scroll
@@ -305,6 +233,7 @@ class AstroHomeScreen extends StatelessWidget {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return Card(
+                          color: ThemeColor.backgroundColor,
                           margin: EdgeInsets.only(right: 10, bottom: 4),
                           elevation: 4,
                           child: Container(
@@ -316,12 +245,11 @@ class AstroHomeScreen extends StatelessWidget {
                                   children: [
                                     CircleAvatar(
                                       radius: 35,
-                                      backgroundColor:
-                                          ColorResources.primaryColor,
+                                      backgroundColor: ThemeColor.primaryColor,
                                       child: CircleAvatar(
                                         radius: 33,
-                                        backgroundImage: AssetImage(
-                                            'assets/astro$index.jpg'), // Replace with real image
+                                        backgroundImage: NetworkImage(controller
+                                            .image), // Replace with real image
                                       ),
                                     ),
                                     Positioned(
@@ -398,9 +326,9 @@ class AstroHomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         gradient: LinearGradient(
                           colors: [
-                            ColorResources.primaryColor,
-                            ColorResources.primaryColor,
-                            ColorResources.primaryColor,
+                            ThemeColor.primaryColor,
+                            ThemeColor.primaryColor,
+                            ThemeColor.primaryColor,
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -498,8 +426,8 @@ class AstroHomeScreen extends StatelessWidget {
                             Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  color: ColorResources.primaryColor
-                                      .withOpacity(0.5)),
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.5)),
                               padding: EdgeInsets.all(16),
                               // Adjust padding inside the card
                               child: Column(
@@ -571,6 +499,7 @@ class AstroHomeScreen extends StatelessWidget {
   Widget _buildCard(String title, String imagePath) {
     return Card(
       elevation: 5,
+      color: ThemeColor.backgroundColor,
       child: Container(
         width: 100,
         height: 120,
@@ -587,21 +516,37 @@ class AstroHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceCard(String icon, String title) {
-    return Column(
-      children: [
-        Card(
-          elevation: 3,
-          child: Container(
-            width: 60,
+  Widget _buildServiceCard({image, name}) {
+    return InkWell(
+      onTap: () {
+        // Get.to(() => HomeScreen2());
+      },
+      child: Column(
+        children: [
+          Container(
             height: 60,
-            child: Center(
-              child: Image.asset(icon),
+            width: 60,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.15),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                ),
+              ],
             ),
+            padding: EdgeInsets.all(15),
+            child: Image(image: AssetImage(image)),
           ),
-        ),
-        Text(title, style: TextStyle(fontSize: 14)),
-      ],
+          SizedBox(height: 12),
+          Text(
+            name.toString(),
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 }

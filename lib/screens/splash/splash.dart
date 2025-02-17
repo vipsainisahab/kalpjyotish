@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_astro/screens/auth/login_screen.dart';
 
+import '../../utils/color_resource.dart';
 import '../dashboard/dashboard_screen.dart';
 import '../login/login_screen.dart';
 
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ThemeColor.backgroundColor,
       body: Column(
         children: [
           Align(

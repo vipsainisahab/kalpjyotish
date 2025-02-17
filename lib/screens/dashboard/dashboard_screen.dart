@@ -5,7 +5,6 @@ import '../home/home_screen.dart';
 import '../notification/notification_screen.dart';
 import '../profile/profile_screen.dart';
 
-
 class DashboardScreen extends StatefulWidget {
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
@@ -35,11 +34,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       body: _screens[_selectedIndex], // Display selected screen
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: ColorResources.primaryColor,
+        backgroundColor: ThemeColor.primaryColor,
         currentIndex: _selectedIndex, // Current selected index
         onTap: _onItemTapped, // Change screen when an item is tapped
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(backgroundColor:ColorResources.primaryColor ,
+          BottomNavigationBarItem(backgroundColor: ThemeColor.primaryColor,
 
             icon: Icon(Icons.home),
             label: 'Home',

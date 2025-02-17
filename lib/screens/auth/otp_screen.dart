@@ -218,7 +218,7 @@ class OtpScreen extends StatelessWidget {
 //                   text: 'OTP Verification',
 //                   fontSize: 24,
 //                   fontWeight: FontWeight.bold,
-//                   color: ColorResources.buttonTextColor,
+//                   color: ThemeColor.buttonTextColor,
 //                   textAlign: TextAlign.center,
 //                 ),
 //                 SizedBox(height: 10),
@@ -226,7 +226,7 @@ class OtpScreen extends StatelessWidget {
 //                   text: 'An 4 digit code has been sent to your number',
 //                   fontSize: 13,
 //                   fontWeight: FontWeight.normal,
-//                   color: ColorResources.buttonTextColor,
+//                   color: ThemeColor.buttonTextColor,
 //                   textAlign: TextAlign.center,
 //                 ),
 //                 SizedBox(height: 10),
@@ -262,7 +262,7 @@ class OtpScreen extends StatelessWidget {
 //                         text: 'Log in or Sign up',
 //                         fontSize: 13,
 //                         fontWeight: FontWeight.bold,
-//                         color: ColorResources.buttonTextColor,
+//                         color: ThemeColor.buttonTextColor,
 //                         textAlign: TextAlign.center,
 //                       ),
 //                     ),
@@ -278,8 +278,8 @@ class OtpScreen extends StatelessWidget {
 //                   text: 'Verify',
 //                   textStyle: const TextStyle(
 //                       fontSize: 13, fontWeight: FontWeight.bold),
-//                   backgroundColor: ColorResources.accentColor,
-//                   textColor: ColorResources.textPrimaryColor,
+//                   backgroundColor: ThemeColor.accentColor,
+//                   textColor: ThemeColor.textPrimaryColor,
 //                   onPressed: () {
 //                     print('Submit Button Pressed');
 //                     Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
@@ -297,7 +297,7 @@ class OtpScreen extends StatelessWidget {
 //                         'OR',
 //                         style: TextStyle(
 //                           fontSize: 13,
-//                           color: ColorResources.buttonTextColor,
+//                           color: ThemeColor.buttonTextColor,
 //                         ),
 //                       ),
 //                     ),
@@ -313,10 +313,10 @@ class OtpScreen extends StatelessWidget {
 //                   textStyle: const TextStyle(
 //                       fontSize: 13,
 //                       fontWeight: FontWeight.bold,
-//                       color: ColorResources.buttonTextColor),
+//                       color: ThemeColor.buttonTextColor),
 //                   backgroundColor: Colors.transparent,
-//                   textColor: ColorResources.buttonTextColor,
-//                   borderColor: ColorResources.buttonTextColor,
+//                   textColor: ThemeColor.buttonTextColor,
+//                   borderColor: ThemeColor.buttonTextColor,
 //                   onPressed: () {
 //                     print('Submit Button Pressed');
 //                   },
@@ -327,7 +327,7 @@ class OtpScreen extends StatelessWidget {
 //                   child: CustomText(
 //                     text: 'By signing up, you agree to our Terms of Use and Privacy Policy',
 //                     fontSize: 10,
-//                     color: ColorResources.buttonTextColor,
+//                     color: ThemeColor.buttonTextColor,
 //                   ),
 //                 ),
 //               ],

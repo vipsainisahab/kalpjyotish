@@ -17,13 +17,13 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
       appBar: AppBar(
         title: CustomText(
           text: 'Astrologer Profile',
-          color: ColorResources.buttonTextColor,
+          color: ThemeColor.buttonTextColor,
         ),
-        backgroundColor: ColorResources.primaryColor,
+        backgroundColor: ThemeColor.primaryColor,
       ),
       bottomNavigationBar: Container(
         height: 60,
-        color: ColorResources.primaryColor,
+        color: ThemeColor.primaryColor,
         padding: EdgeInsets.symmetric(horizontal: 12),
         child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

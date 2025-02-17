@@ -129,7 +129,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Feedback & Support'),
-        backgroundColor: ColorResources.primaryColor,
+        backgroundColor: ThemeColor.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -182,7 +182,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               } else {
                 print('Contact Support submitted: ${_subjectController.text}');
               }
-            }, backgroundColor: ColorResources.primaryColor,),
+            }, backgroundColor: ThemeColor.primaryColor,),
 
           ],
         ),

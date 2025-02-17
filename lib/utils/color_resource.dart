@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ColorResources {
+class ThemeColor {
   // Primary Colors
-  static const Color primaryColor = Color(0xFFDE1F27);
+  static const Color primaryColor = Color(0xFFE1353C);
   static const Color secondaryColor = Color(0xFF03DAC6);
   static const Color accentColor = Color(0xFFFFB900);
 
+  static const Color homeScreenColor = Color(0xFFF4F4F4);
 
   // Background Colors
   static const Color backgroundColor = Color(0xFFF5F5F5); // Light Grey
@@ -15,6 +16,8 @@ class ColorResources {
   static const Color textPrimaryColor = Color(0xFF212121); // Black
   static const Color textSecondaryColor = Color(0xFF757575); // Grey
   static const Color textHintColor = Color(0xFF9E9E9E); // Light Grey
+  static const Color astroGreen = Color(0xFF157B11); // Green
+
 
   // Button Colors
   static const Color buttonColor = Color(0xFF6200EA); // Purple
@@ -28,6 +31,7 @@ class ColorResources {
 
   // Success Colors
   static const Color successColor = Color(0xFF388E3C); // Green
+
 
   // Info Colors
   static const Color infoColor = Color(0xFF1976D2); // Blue

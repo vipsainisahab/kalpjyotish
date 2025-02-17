@@ -1,133 +1,166 @@
-import 'package:new_astro/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/color_resource.dart';
-import '../../widgets/custom_appbar.dart';
+import '../../widgets/custom_btn.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../feedback_screen/feedback_screen.dart';
+import 'controller.dart';
 
-class ProfileScreen extends StatefulWidget {
-  @override
-  _ProfileScreenState createState() => _ProfileScreenState();
-}
+class ProfileScreen extends StatelessWidget {
+  ProfileScreen({super.key});
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  // For form handling
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController();
-  final TextEditingController _locationController = TextEditingController();
-  final TextEditingController _zipcodeController = TextEditingController();
-  String? _gender = 'Male';
-
-  // Boolean to toggle views
-  bool _showPersonalDetails = false;
+  final controller = Get.put(tag: 'ProfileController', ProfileController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text('Profile'),
-        backgroundColor: ColorResources.primaryColor,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            customAppBar(),
-            SizedBox(height: 30),
-            // Profile Card Section
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 20),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: ColorResources.primaryColor.withOpacity(0.5),
-                    ),
-                    padding: EdgeInsets.all(16),
-                    margin: EdgeInsets.all(8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 60),
-                        Text(
-                          'User Name',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          '+91 9988774411.',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white.withOpacity(0.8),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showPersonalDetails = true;
-                                });
-                              },
-                              child: Text('Personal Details',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showPersonalDetails = false;
-                                });
-                              },
-                              child: Text('Settings',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: -40,
-                    left: MediaQuery.of(context).size.width * 0.35,
-                    right: MediaQuery.of(context).size.width * 0.35,
-                    child: ClipOval(
-                      child: Container(
-                        color: Colors.white,
-                        child: Image.asset(
-                          'assets/images/Planet.png',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+      backgroundColor: Color(0xFFE63946),
+      body: Obx(
+            () => SingleChildScrollView(
+            child: Stack(
+              children: [
+                Positioned(
+                    right: 0,
+                    top: 0,
+                    child: Container(
+                      width: 150,
+                      height: 154,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/images/login_top.png'))),
+                    )),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 50),
+                    SizedBox(height: Get.size.height * .24),
+                    // Login Form
+                    Container(
+                      height: Get.size.height * .8,
+                      width: Get.size.height * .9,
+                      padding: const EdgeInsets.only(top: 12),
+                      decoration: const BoxDecoration(
+                        color: Colors.white, // Red background
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
                         ),
                       ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Show content based on the boolean value
+                          controller.showPersonalDetails.value
+                              ? _buildPersonalDetailsForm()
+                              : _buildSettingsSection(),
+
+                          SizedBox(height: 12),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CustomButton(
+                              text: "Logout",
+                              onPressed: () {},
+                              backgroundColor: ThemeColor.primaryColor,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            // Show content based on the boolean value
-            _showPersonalDetails
-                ? _buildPersonalDetailsForm()
-                : _buildSettingsSection(),
-            
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomButton(text: "Logout", onPressed: (){},backgroundColor: ColorResources.primaryColor,),
-            )
-          ],
-        ),
+                  ],
+                ),
+                Positioned(
+                    top: Get.size.height * .16,
+                    left: Get.size.width * .05,
+                    child: Container(
+                      width: 320,
+                      height: 154,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black54,
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                            offset: Offset(4, 4),
+                          )
+                        ],
+                      ),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 25),
+                                  Text(
+                                    'User Name',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image(
+                                        image: AssetImage(
+                                            'assets/icon/cell_phone_icon.png'),
+                                        width: 15,
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      Text(
+                                        '1234567890',
+                                        style: TextStyle(
+                                            fontSize: 13, color: Colors.black87),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Positioned(
+                              bottom: 0,
+                              child: Row(
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          'assets/images/profile_user_vector.png')),
+                                  SizedBox(width: 10),
+                                  InkWell(
+                                    onTap: () {
+                                      controller.showPersonalDetails.toggle();
+                                    },
+                                    child: Text(
+                                      'Personal Info',
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(width: 90),
+                                  Text(
+                                    'Settings',
+                                    style: TextStyle(color: Color(0xFF838383)),
+                                  ),
+                                ],
+                              ))
+                        ],
+                      ),
+                    )),
+                Positioned(
+                    top: Get.size.height * .1,
+                    left: Get.size.width * .35,
+                    child: Container(
+                      width: 110,
+                      height: 110,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(100),
+                          image: DecorationImage(
+                              image: NetworkImage(controller.image.toString()),
+                              fit: BoxFit.cover)),
+                    )),
+              ],
+            )),
       ),
     );
   }
@@ -135,17 +168,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // Build Personal Details Form
   Widget _buildPersonalDetailsForm() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
       child: Form(
-        key: _formKey,
+        key: controller.formKey,
         child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 35),
               CustomTextFormField(
                 labelText: 'Name',
-                controller: _nameController,
+                controller: controller.nameController,
                 keyboardType: TextInputType.name,
                 validator: (value) =>
                 value!.isEmpty ? 'Name is required' : null,
@@ -153,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 8),
               CustomTextFormField(
                 labelText: 'Phone Number',
-                controller: _phoneController,
+                controller: controller.phoneController,
                 keyboardType: TextInputType.phone,
                 validator: (value) =>
                 value!.isEmpty ? 'Phone number is required' : null,
@@ -161,7 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 8),
               CustomTextFormField(
                 labelText: 'Email',
-                controller: _emailController,
+                controller: controller.emailController,
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) =>
                 value!.isEmpty ? 'Email is required' : null,
@@ -169,7 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 8),
               CustomTextFormField(
                 labelText: 'Date of Birth',
-                controller: _dobController,
+                controller: controller.dobController,
                 keyboardType: TextInputType.datetime,
                 validator: (value) =>
                 value!.isEmpty ? 'Date of Birth is required' : null,
@@ -179,22 +213,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Radio<String>(
                     value: 'Male',
-                    groupValue: _gender,
+                    groupValue: controller.gender.value,
                     onChanged: (value) {
-                      setState(() {
-                        _gender = value;
-                      });
+                      controller.gender.value = value!;
                     },
                   ),
                   SizedBox(height: 8),
                   Text('Male'),
                   Radio<String>(
                     value: 'Female',
-                    groupValue: _gender,
+                    groupValue: controller.gender.value,
                     onChanged: (value) {
-                      setState(() {
-                        _gender = value;
-                      });
+                      controller.gender.value = value!;
                     },
                   ),
                   Text('Female'),
@@ -203,7 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 8),
               CustomTextFormField(
                 labelText: 'Location',
-                controller: _locationController,
+                controller: controller.locationController,
                 keyboardType: TextInputType.text,
                 validator: (value) =>
                 value!.isEmpty ? 'Location is required' : null,
@@ -211,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 8),
               CustomTextFormField(
                 labelText: 'Zip Code',
-                controller: _zipcodeController,
+                controller: controller.zipcodeController,
                 keyboardType: TextInputType.number,
                 validator: (value) =>
                 value!.isEmpty ? 'Zip code is required' : null,
@@ -219,15 +249,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CustomButton(text: "Submit", onPressed: (){
-                  if (_formKey.currentState!.validate()) {
-                    // Save and submit form data
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Details submitted!')));
-                  }
-                },backgroundColor: ColorResources.primaryColor,),
+                child: CustomButton(
+                  text: "Submit",
+                  onPressed: () {
+                    if (controller.formKey.currentState!.validate()) {
+                      // Save and submit form data
+                      Get.snackbar('Success', 'Details submitted!');
+                    }
+                  },
+                  backgroundColor: ThemeColor.primaryColor,
+                ),
               )
-
             ],
           ),
         ),
@@ -241,7 +273,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       children: [
+        SizedBox(height: 25),
         ListTile(
+          minTileHeight: 1,
           title: Text('FAQ'),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
@@ -251,19 +285,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Divider(
           color: Colors.grey.shade200,
         ),
-
         ListTile(
-
+          minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('Feedback'),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackScreen(),));
+            Get.to(() => FeedbackScreen());
           },
         ),
         Divider(
           color: Colors.grey.shade200,
         ),
         ListTile(
+          minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('Terms & Conditions'),
           onTap: () {
@@ -274,6 +308,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.grey.shade200,
         ),
         ListTile(
+          minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('Privacy'),
           onTap: () {
@@ -284,6 +319,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.grey.shade200,
         ),
         ListTile(
+          minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('About Us'),
           onTap: () {
@@ -294,6 +330,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.grey.shade200,
         ),
         ListTile(
+          minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('Contact Us'),
           onTap: () {
@@ -307,6 +344,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-
-
-
