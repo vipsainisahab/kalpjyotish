@@ -19,8 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // if (TokenManager.hasToken() == true) {
     Future.delayed(const Duration(seconds: 2), () {
-      // Get.to(() => LoginScreen());
-      Get.offAll(() => DashboardScreen());
+      Get.to(() => LoginScreen());
+      // Get.offAll(() => DashboardScreen());
     });
     // } else {
     //   Get.to(() => LoginScreen());
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeColor.backgroundColor,
+      backgroundColor: Color(0xFFFFFFFF),
       body: Column(
         children: [
           Align(
@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  'assets/images/splash.png',
+                  'assets/images/logo.jpg',
                   width: 280,
                 ),
                 const SizedBox(height: 10),
