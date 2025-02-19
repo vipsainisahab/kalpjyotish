@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:new_astro/screens/test/test.dart';
 
-import '../../utils/color_resource.dart';
+import '../../utils/theme_color.dart';
 import '../../widgets/custom_btn.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../feedback_screen/feedback_screen.dart';
@@ -42,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                       width: Get.size.height * .9,
                       padding: const EdgeInsets.only(top: 12),
                       decoration: const BoxDecoration(
-                        color: Colors.white, // Red background
+                        color: ThemeColor.textWhiteColor, // Red background
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20),
@@ -77,11 +78,11 @@ class ProfileScreen extends StatelessWidget {
                       width: 320,
                       height: 154,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ThemeColor.textWhiteColor,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black54,
+                            color: ThemeColor.lightBlackColor.withOpacity(.4),
                             blurRadius: 10,
                             spreadRadius: 2,
                             offset: Offset(4, 4),
@@ -112,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                                       Text(
                                         '1234567890',
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.black87),
+                                            fontSize: 13, color: ThemeColor.lightBlackColor),
                                       ),
                                     ],
                                   ),
@@ -152,8 +153,8 @@ class ProfileScreen extends StatelessWidget {
                       width: 110,
                       height: 110,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.white, width: 2),
+                          color: ThemeColor.textWhiteColor,
+                          border: Border.all(color: ThemeColor.textWhiteColor, width: 2),
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(
                               image: NetworkImage(controller.image.toString()),
@@ -283,7 +284,7 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
         ListTile(
           minTileHeight: 1,
@@ -294,18 +295,18 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
         ListTile(
           minTileHeight: 1,
           trailing: Icon(Icons.keyboard_arrow_right),
           title: Text('Terms & Conditions'),
           onTap: () {
-            // Navigate to Terms & Conditions page
+            // Get.to(() => KundliScreen2());
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
         ListTile(
           minTileHeight: 1,
@@ -316,7 +317,7 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
         ListTile(
           minTileHeight: 1,
@@ -327,7 +328,7 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
         ListTile(
           minTileHeight: 1,
@@ -338,7 +339,7 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
         Divider(
-          color: Colors.grey.shade200,
+          color: ThemeColor.greyColor.shade200,
         ),
       ],
     );

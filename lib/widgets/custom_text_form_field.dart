@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 
 import 'package:flutter/material.dart';
+import 'package:new_astro/utils/theme_color.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String? labelText;
@@ -54,9 +55,9 @@ class CustomTextFormField extends StatelessWidget {
       textInputAction: textInputAction,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: labelStyle ?? const TextStyle(color: Colors.black), // Default label style
+        labelStyle: labelStyle ?? const TextStyle(color: ThemeColor.blackColor), // Default label style
         hintText: hintText,
-        hintStyle: hintStyle ?? const TextStyle(color: Colors.grey), // Default hint style
+        hintStyle: hintStyle ?? const TextStyle(color: ThemeColor.greyColor), // Default hint style
         border: border ?? const OutlineInputBorder(), // Default border
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         suffixIcon: suffixIcon != null

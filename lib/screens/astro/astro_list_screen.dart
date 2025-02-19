@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:new_astro/model/astrologer.dart';
 import 'package:new_astro/widgets/custom_appbar.dart';
-import '../../utils/color_resource.dart';
+import 'package:new_astro/widgets/image_text_icon.dart';
+import '../../utils/theme_color.dart';
 import 'astro_profile.dart';
 import 'controller.dart';
 
@@ -17,8 +19,7 @@ class AstrologerListScreen extends StatelessWidget {
         children: [
           // Filter List
           Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -32,225 +33,14 @@ class AstrologerListScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Astrologer Cards
+
           Expanded(
             child: Obx(() {
               return ListView.builder(
                 itemCount: controller.astrologers.length,
                 itemBuilder: (context, index) {
                   var astrologer = controller.astrologers[index];
-                  return Padding(
-                    padding: EdgeInsets.all(5),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(() => AstroProfileScreen());
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  // Image Section
-                                  Expanded(
-                                    flex: 3,
-                                    child: Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          child: Image.network(
-                                            controller.image,
-                                            width: double.infinity,
-                                            height: Get.size.height * .18,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Positioned(
-                                          bottom: 0,
-                                          // top: 50,
-                                          left: Get.size.width * .05,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(4),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 4),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Icon(Icons.star,
-                                                    color: Colors.orange,
-                                                    size: 14),
-                                                SizedBox(width: 4),
-                                                Text('${astrologer.rating}',
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 12)),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: 16),
-                                  // Details Section
-                                  Expanded(
-                                    flex: 7,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(astrologer.name,
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Icon(Icons.verified,
-                                                color: Colors.green),
-                                          ],
-                                        ),
-                                        SizedBox(height: 8),
-                                        Text(
-                                            'Specialized in: ${astrologer.specialization}',
-                                            style: TextStyle(
-                                                fontSize: 11,
-                                                color: Colors.grey)),
-                                        SizedBox(height: 4),
-                                        Text(
-                                            'Languages: ${astrologer.languages}',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey)),
-                                        SizedBox(height: 4),
-                                        Text(
-                                            'Experience: ${astrologer.experience}',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey)),
-                                        SizedBox(height: 4),
-                                        Text('Fee: ${astrologer.fee}',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey)),
-                                        SizedBox(height: 8),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.circle,
-                                              color: astrologer.isOnline
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                              size: 12,
-                                            ),
-                                            SizedBox(width: 4),
-                                            Text(
-                                              astrologer.isOnline
-                                                  ? 'Online'
-                                                  : 'Offline',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: astrologer.isOnline
-                                                    ? Colors.green
-                                                    : Colors.red,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 8),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  ElevatedButton.icon(
-                                    onPressed:
-                                        astrologer.isOnline ? () {} : null,
-                                    icon: Icon(Icons.chat,
-                                        size: 16,
-                                        color: astrologer.isOnline
-                                            ? ThemeColor.astroGreen
-                                            : Colors.red),
-                                    label: Text('Chat',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: astrologer.isOnline
-                                                ? ThemeColor.astroGreen
-                                                : Colors.red)),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      elevation: 4,
-                                    ),
-                                  ),
-                                  SizedBox(width: 8),
-                                  ElevatedButton.icon(
-                                    onPressed:
-                                        astrologer.isOnline ? () {} : null,
-                                    icon: Icon(Icons.call,
-                                        size: 16,
-                                        color: astrologer.isOnline
-                                            ? ThemeColor.astroGreen
-                                            : Colors.red),
-                                    label: Text('Call',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: astrologer.isOnline
-                                                ? ThemeColor.astroGreen
-                                                : Colors.red)),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      elevation: 4,
-                                    ),
-                                  ),
-                                  SizedBox(width: 8),
-                                  ElevatedButton.icon(
-                                    onPressed:
-                                        astrologer.isOnline ? () {} : null,
-                                    icon: Icon(Icons.videocam,
-                                        size: 16,
-                                        color: astrologer.isOnline
-                                            ? ThemeColor.astroGreen
-                                            : Colors.red),
-                                    label: Text('Video',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: astrologer.isOnline
-                                                ? ThemeColor.astroGreen
-                                                : Colors.red)),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      elevation: 4,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+                  return _userCard(astrologer);
                 },
               );
             }),
@@ -269,12 +59,12 @@ class AstrologerListScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           margin: EdgeInsets.only(left: 8, bottom: 10, top: 10),
           decoration: BoxDecoration(
-            color: isSelected ? Colors.blue : ThemeColor.backgroundColor,
+            color: isSelected ? ThemeColor.blueColor : ThemeColor.backgroundColor,
             borderRadius: BorderRadius.circular(50),
-            border: Border.all(color: Colors.black12),
+            border: Border.all(color: ThemeColor.blackColor.withOpacity(.6)),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.shade400,
+                color: ThemeColor.greyColor.shade400,
                 blurRadius: 4,
                 offset: Offset(3, 3),
               ),
@@ -282,10 +72,172 @@ class AstrologerListScreen extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+            style: TextStyle(color: isSelected ? ThemeColor.textWhiteColor : ThemeColor.blackColor),
           ),
         ),
       );
     });
+  }
+
+  Widget _buildBTN(Astrologer astrologer) {
+    return Row(
+      children: [
+        imageTextBTN(
+            image: 'assets/icon/chat.png',
+            name: 'Chat',
+            isOnline: astrologer.isOnline),
+        Spacer(),
+        imageTextBTN(
+            image: 'assets/icon/call.png',
+            name: 'Call',
+            isOnline: astrologer.isOnline),
+        Spacer(),
+        imageTextBTN(
+            image: 'assets/icon/video_call.png',
+            name: 'Video Call',
+            isOnline: astrologer.isOnline),
+      ],
+    );
+  }
+
+  Widget _userCard(Astrologer astrologer) {
+    return Padding(
+      padding: EdgeInsets.all(5),
+      child: GestureDetector(
+        onTap: () {
+          Get.to(() => AstroProfileScreen());
+        },
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Image.network(
+                              controller.image,
+                              height: Get.size.height * .18,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        // Details Section
+                        Expanded(
+                          flex: 7,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(astrologer.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16)),
+                                  Icon(Icons.verified,
+                                      size: 20, color: Color(0xFF156411)),
+                                ],
+                              ),
+                              SizedBox(height: 8),
+                              _userTextDetails(
+                                  text: astrologer.specialization,
+                                  image: 'assets/icon/reading_icon.png'),
+                              _userTextDetails(
+                                  text: astrologer.languages,
+                                  image: 'assets/icon/language.png'),
+                              _userTextDetails(
+                                  text: astrologer.experience,
+                                  image: 'assets/icon/expert.png'),
+                              _userTextDetails(
+                                  text: astrologer.fee,
+                                  image: 'assets/icon/rupy_icon.png',
+                                  isOnline: astrologer.isOnline),
+                              SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      // top: 50,
+                      left: Get.size.width * .05,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: ThemeColor.textWhiteColor,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: ThemeColor.greyColor.shade300,
+                              blurRadius: 2,
+                              spreadRadius: 2,
+                              offset: Offset(1, 2),
+                            )
+                          ],
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 4),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.star, color: ThemeColor.amberColor, size: 14),
+                            SizedBox(width: 4),
+                            Text('${astrologer.rating}',
+                                style: TextStyle(
+                                    color: ThemeColor.greyColor.shade700, fontSize: 12)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                _buildBTN(astrologer),
+                Divider(
+                  color: ThemeColor.greyColor,
+                  thickness: 1,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _userTextDetails({String? text, String? image, bool? isOnline}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(children: [
+        Container(
+          height: 18,
+          width: 18,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('$image'))),
+        ),
+        SizedBox(width: 5),
+        Expanded(
+            child: Text("$text",
+                style: TextStyle(fontSize: 11, color: ThemeColor.greyColor))),
+        if (isOnline != null)
+          Padding(
+            padding: const EdgeInsets.only(right: 65),
+            child: Text(isOnline ? 'Online' : 'Offline',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                  color: isOnline ? ThemeColor.astroGreen : ThemeColor.redColor,
+                )),
+          ),
+      ]),
+    );
   }
 }

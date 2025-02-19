@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_astro/utils/theme_color.dart';
 
 
 class CustomButton extends StatelessWidget {
@@ -42,28 +43,28 @@ class CustomButton extends StatelessWidget {
           color: backgroundColor ?? Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
-            color: borderColor ?? Colors.transparent, // Use the border color or transparent
+            color: borderColor ?? ThemeColor.transparent, // Use the border color or transparent
             width: borderWidth!, // Apply the border width
           ),
         ),
         alignment: Alignment.center,
         child: isLoading
             ? const CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          valueColor: AlwaysStoppedAnimation<Color>(ThemeColor.textWhiteColor),
         )
             : Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             if (icon != null) ...[
-              Icon(icon, color: textColor ?? Colors.white),
+              Icon(icon, color: textColor ?? ThemeColor.textWhiteColor),
               const SizedBox(width: 8),
             ],
             Text(
               text,
               style: textStyle ??
                   TextStyle(
-                    color: textColor ?? Colors.white,
+                    color: textColor ?? ThemeColor.textWhiteColor,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

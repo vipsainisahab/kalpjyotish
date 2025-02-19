@@ -1,4 +1,4 @@
-// import 'package:new_astro/utils/color_resource.dart';
+// import 'package:new_astro/utils/theme_color.dart';
 // import 'package:flutter/material.dart';
 //
 // import '../../utils/common/common_container.dart';
@@ -38,7 +38,7 @@
 //               height: MediaQuery.of(context).size.height * 0.50,
 //               padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
 //               decoration: const BoxDecoration(
-//                 color: Colors.red,
+//                 color: ThemeColor.redColor,
 //                 borderRadius: BorderRadius.only(
 //                   topLeft: Radius.circular(20),
 //                   topRight: Radius.circular(20),
@@ -54,20 +54,20 @@
 //                     style: TextStyle(
 //                       fontSize: 24,
 //                       fontWeight: FontWeight.bold,
-//                       color: Colors.white,
+//                       color: ThemeColor.textWhiteColor,
 //                     ),
 //                   ),
 //                   const SizedBox(height: 5),
 //                   Text(
 //                     'Submit your Mobile number',
-//                     style: TextStyle(fontSize: 13, color: Colors.white),
+//                     style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
 //                   ),
 //                   const SizedBox(height: 10),
 //
 //                   // **Divider with "Login" Text**
 //                   Row(
 //                     children: const [
-//                       Expanded(child: Divider(color: Colors.white)),
+//                       Expanded(child: Divider(color: ThemeColor.textWhiteColor)),
 //                       Padding(
 //                         padding: EdgeInsets.symmetric(horizontal: 10),
 //                         child: Text(
@@ -75,11 +75,11 @@
 //                           style: TextStyle(
 //                             fontSize: 13,
 //                             fontWeight: FontWeight.bold,
-//                             color: Colors.white,
+//                             color: ThemeColor.textWhiteColor,
 //                           ),
 //                         ),
 //                       ),
-//                       Expanded(child: Divider(color: Colors.white)),
+//                       Expanded(child: Divider(color: ThemeColor.textWhiteColor)),
 //                     ],
 //                   ),
 //                   const SizedBox(height: 10),
@@ -89,7 +89,7 @@
 //                     height: 48,
 //                     decoration: BoxDecoration(
 //                       borderRadius: BorderRadius.circular(8),
-//                       color: Colors.white,
+//                       color: ThemeColor.textWhiteColor,
 //                     ),
 //                     child: Row(
 //                       children: [
@@ -125,7 +125,7 @@
 //                   // **Send OTP Button**
 //                   ElevatedButton(
 //                     style: ElevatedButton.styleFrom(
-//                       backgroundColor: Colors.amber,
+//                       backgroundColor: ThemeColor.amberColor,
 //                       shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(16)),
 //
 //                       minimumSize: const Size(double.infinity, 48),
@@ -144,15 +144,15 @@
 //                   // **Divider with OR**
 //                   Row(
 //                     children: const [
-//                       Expanded(child: Divider(color: Colors.white)),
+//                       Expanded(child: Divider(color: ThemeColor.textWhiteColor)),
 //                       Padding(
 //                         padding: EdgeInsets.symmetric(horizontal: 10),
 //                         child: Text(
 //                           'OR',
-//                           style: TextStyle(fontSize: 13, color: Colors.white),
+//                           style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
 //                         ),
 //                       ),
-//                       Expanded(child: Divider(color: Colors.white)),
+//                       Expanded(child: Divider(color: ThemeColor.textWhiteColor)),
 //                     ],
 //                   ),
 //
@@ -161,15 +161,15 @@
 //                   // **Continue with Email Button**
 //                   OutlinedButton.icon(
 //                     style: OutlinedButton.styleFrom(
-//                       foregroundColor: Colors.white,
+//                       foregroundColor: ThemeColor.textWhiteColor,
 //                       shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(16)),
-//                       side: const BorderSide(color: Colors.white),
+//                       side: const BorderSide(color: ThemeColor.textWhiteColor),
 //                       minimumSize: const Size(double.infinity, 48),
 //                     ),
 //                     onPressed: () {
 //                       print('Continue with Email');
 //                     },
-//                     icon: const Icon(Icons.email, color: Colors.white),
+//                     icon: const Icon(Icons.email, color: ThemeColor.textWhiteColor),
 //                     label: const Text(
 //                       'Continue with Email ID',
 //                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -183,7 +183,7 @@
 //                     child: Text(
 //                       'By signing up, you agree to our Terms of Use and Privacy Policy',
 //                       textAlign: TextAlign.center,
-//                       style: TextStyle(fontSize: 10, color: Colors.white),
+//                       style: TextStyle(fontSize: 10, color: ThemeColor.textWhiteColor),
 //                     ),
 //                   ),
 //                 ],

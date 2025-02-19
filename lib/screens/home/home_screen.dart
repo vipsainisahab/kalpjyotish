@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:new_astro/utils/color_resource.dart';
+import 'package:new_astro/screens/test/test.dart';
+import 'package:new_astro/utils/theme_color.dart';
 import 'package:new_astro/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 import '../astro/astro_list_screen.dart';
@@ -25,7 +26,7 @@ class AstroHomeScreen extends StatelessWidget {
                     width: Get.size.width * .6,
                     height: 200,
                     decoration: const BoxDecoration(
-                      // color: Colors.red,
+                      // color: ThemeColor.redColor,
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage('assets/images/home_vector.png'),
@@ -39,12 +40,12 @@ class AstroHomeScreen extends StatelessWidget {
                           SizedBox(height: 50),
                           Text(
                             'Hello User,',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: ThemeColor.textWhiteColor),
                           ),
                           Text(
                             'Welcome to\nAstro',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeColor.textWhiteColor,
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -70,7 +71,9 @@ class AstroHomeScreen extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      // Get.to(()=>FeedbackSupportScreen());
+                    },
                     child: Image(
                       image: AssetImage('assets/icon/notification_icon.png'),
                       width: 30,
@@ -114,14 +117,14 @@ class AstroHomeScreen extends StatelessWidget {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 8, vertical: 2),
                                           decoration: BoxDecoration(
-                                            color: Colors.red,
+                                            color: ThemeColor.redColor,
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
                                           child: Text(
                                             'Live',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: ThemeColor.textWhiteColor,
                                                 fontSize: 12),
                                           ),
                                         ),
@@ -133,7 +136,7 @@ class AstroHomeScreen extends StatelessWidget {
                               Text(
                                 'Name',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
+                                    color: ThemeColor.blackColor, fontSize: 12),
                               ),
                             ],
                           ),
@@ -149,11 +152,7 @@ class AstroHomeScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => KundliScreen(),
-                                ));
+                            Get.to(() => KundliScreen());
                           },
                           child:
                               _buildCard('Kundli', 'assets/images/kundli.png')),
@@ -178,7 +177,7 @@ class AstroHomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.15),
+                          color: ThemeColor.blackColor.withOpacity(0.15),
                           spreadRadius: 2,
                           blurRadius: 5,
                         ),
@@ -213,11 +212,7 @@ class AstroHomeScreen extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AstrologerListScreen(),
-                                ));
+                            Get.to(() => AstrologerListScreen());
                           },
                           child: Text(
                             'View All',
@@ -261,7 +256,7 @@ class AstroHomeScreen extends StatelessWidget {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 8, vertical: 2),
                                             decoration: BoxDecoration(
-                                              color: Colors.red,
+                                              color: ThemeColor.redColor,
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                             ),
@@ -270,7 +265,7 @@ class AstroHomeScreen extends StatelessWidget {
                                                 Icon(
                                                   Icons.star_border,
                                                   size: 12,
-                                                  color: Colors.white,
+                                                  color: ThemeColor.textWhiteColor,
                                                 ),
                                                 SizedBox(
                                                   width: 4,
@@ -278,7 +273,7 @@ class AstroHomeScreen extends StatelessWidget {
                                                 Text(
                                                   '5',
                                                   style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: ThemeColor.textWhiteColor,
                                                       fontSize: 12),
                                                 ),
                                               ],
@@ -300,7 +295,7 @@ class AstroHomeScreen extends StatelessWidget {
                                 Text(
                                   '₹500/min',
                                   style: TextStyle(
-                                      fontSize: 12, color: Colors.grey),
+                                      fontSize: 12, color: ThemeColor.textSecondaryColor),
                                 ),
                                 SizedBox(height: 10),
                                 CustomButton(
@@ -361,7 +356,7 @@ class AstroHomeScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey),
+                        color: ThemeColor.textSecondaryColor),
                   ),
                   SizedBox(height: 10),
                   SizedBox(
@@ -396,7 +391,7 @@ class AstroHomeScreen extends StatelessWidget {
                                 Text(
                                   '₹500/min',
                                   style: TextStyle(
-                                      fontSize: 12, color: Colors.grey),
+                                      fontSize: 12, color: ThemeColor.textSecondaryColor),
                                 ),
                               ],
                             ),
@@ -440,7 +435,7 @@ class AstroHomeScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                      color: ThemeColor.textWhiteColor,
                                     ),
                                   ),
                                   SizedBox(height: 8),
@@ -448,7 +443,7 @@ class AstroHomeScreen extends StatelessWidget {
                                     'Details about the transit event.',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.white.withOpacity(0.8),
+                                      color: ThemeColor.textWhiteColor.withOpacity(0.8),
                                     ),
                                   ),
                                   SizedBox(height: 8),
@@ -458,7 +453,7 @@ class AstroHomeScreen extends StatelessWidget {
                                       onPressed: () {},
                                       child: Text('View All',
                                           style:
-                                              TextStyle(color: Colors.white)),
+                                              TextStyle(color: ThemeColor.textWhiteColor)),
                                     ),
                                   ),
                                 ],
@@ -471,7 +466,7 @@ class AstroHomeScreen extends StatelessWidget {
                               // Align image to the left edge of the card
                               child: ClipOval(
                                 child: Container(
-                                  color: Colors.white,
+                                  color: ThemeColor.textWhiteColor,
                                   // Optional background color for the image
                                   child: Image.asset(
                                     'assets/images/Planet.png',
@@ -527,11 +522,11 @@ class AstroHomeScreen extends StatelessWidget {
             height: 60,
             width: 60,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: ThemeColor.textWhiteColor,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: ThemeColor.blackColor.withOpacity(0.15),
                   spreadRadius: 2,
                   blurRadius: 5,
                 ),

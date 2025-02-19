@@ -1,4 +1,5 @@
-import 'package:new_astro/utils/color_resource.dart';
+import 'package:get/get.dart';
+import 'package:new_astro/utils/theme_color.dart';
 import 'package:flutter/material.dart';
 import '../../utils/common/common_container.dart';
 import '../../widgets/custom_btn.dart';
@@ -36,7 +37,7 @@ class OtpScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               decoration: const BoxDecoration(
-                color: Colors.red,
+                color: ThemeColor.redColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
@@ -52,7 +53,7 @@ class OtpScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: ThemeColor.textWhiteColor,
                     ),
                   ),
                   SizedBox(height: 5),
@@ -60,7 +61,7 @@ class OtpScreen extends StatelessWidget {
                   // Subheading
                   Text(
                     'A 4-digit code has been sent to your number',
-                    style: TextStyle(fontSize: 13, color: Colors.white),
+                    style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
                   ),
                   SizedBox(height: 10),
 
@@ -68,7 +69,7 @@ class OtpScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       '0:58',
-                      style: TextStyle(fontSize: 13, color: Colors.white),
+                      style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
                     ),
                   ),
                   SizedBox(height: 5),
@@ -85,7 +86,7 @@ class OtpScreen extends StatelessWidget {
                         children: List.generate(4, (index) {
                           return Container(
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: ThemeColor.textWhiteColor,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             width: 50,
@@ -116,14 +117,14 @@ class OtpScreen extends StatelessWidget {
 
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.amber,
+                      backgroundColor: ThemeColor.amberColor,
                       shape: ContinuousRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
                       minimumSize: const Size(double.infinity, 48),
                     ),
                     onPressed: () {
                       print('Verify Button Pressed');
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
+                      Get.to(() => DashboardScreen());
                     },
                     child: const Text(
                       'Verify OTP',
@@ -141,7 +142,7 @@ class OtpScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: ThemeColor.textWhiteColor,
                         ),
                       ),
                     ),
@@ -153,13 +154,13 @@ class OtpScreen extends StatelessWidget {
                     onPressed: () {
                       print('Continue with Email Pressed');
                     },
-                    icon: Icon(Icons.mobile_screen_share, color: Colors.white),
+                    icon: Icon(Icons.mobile_screen_share, color: ThemeColor.textWhiteColor),
                     label: Text(
                       'Change Mobile Number',
-                      style: TextStyle(fontSize: 13, color: Colors.white),
+                      style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
                     ),
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.white),
+                      side: BorderSide(color: ThemeColor.textWhiteColor),
                       shape: ContinuousRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
                       minimumSize: Size(double.infinity, 48),
@@ -204,7 +205,7 @@ class OtpScreen extends StatelessWidget {
 //             width: double.infinity,
 //             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
 //             decoration: const BoxDecoration(
-//               color: Colors.red,
+//               color: ThemeColor.redColor,
 //               borderRadius: BorderRadius.only(
 //                 topLeft: Radius.circular(20),
 //                 topRight: Radius.circular(20),
@@ -314,7 +315,7 @@ class OtpScreen extends StatelessWidget {
 //                       fontSize: 13,
 //                       fontWeight: FontWeight.bold,
 //                       color: ThemeColor.buttonTextColor),
-//                   backgroundColor: Colors.transparent,
+//                   backgroundColor: ThemeColor.transparent,
 //                   textColor: ThemeColor.buttonTextColor,
 //                   borderColor: ThemeColor.buttonTextColor,
 //                   onPressed: () {

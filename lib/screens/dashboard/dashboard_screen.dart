@@ -1,4 +1,4 @@
-import 'package:new_astro/utils/color_resource.dart';
+import 'package:new_astro/utils/theme_color.dart';
 import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';

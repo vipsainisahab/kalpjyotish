@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../utils/color_resource.dart';
+import '../../utils/theme_color.dart';
 import '../../widgets/custom_appbar.dart';
 import 'controller.dart';
 
@@ -35,12 +35,12 @@ class NotificationScreen extends StatelessWidget {
                           if (controller.notifications[category['title']]! > 0)
                             CircleAvatar(
                               radius: 10,
-                              backgroundColor: Colors.red,
+                              backgroundColor: ThemeColor.redColor,
                               child: Text(
                                 controller.notifications[category['title']]
                                     .toString(),
                                 style: TextStyle(
-                                    fontSize: 12, color: Colors.white),
+                                    fontSize: 12, color: ThemeColor.textWhiteColor),
                               ),
                             ),
                         ],

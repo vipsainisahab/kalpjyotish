@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/color_resource.dart';
+import 'package:get/get.dart';
+import 'package:new_astro/widgets/custom_appbar.dart';
+import '../../utils/theme_color.dart';
 import '../../widgets/custom_text.dart';
 
 class AstroProfileScreen extends StatefulWidget {
@@ -14,13 +15,8 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-          text: 'Astrologer Profile',
-          color: ThemeColor.buttonTextColor,
-        ),
-        backgroundColor: ThemeColor.primaryColor,
-      ),
+      backgroundColor: ThemeColor.homeScreenColor,
+      appBar: customAppBar(tittle: 'Astrologer Profile', backButton: true),
       bottomNavigationBar: Container(
         height: 60,
         color: ThemeColor.primaryColor,
@@ -30,10 +26,10 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
         children: [
           ElevatedButton.icon(
             onPressed:  () {} ,
-            icon: Icon(Icons.chat, size: 16,color:   Colors.black ,),
-            label: Text('Chat', style: TextStyle(fontSize: 12,color:   Colors.black ,)),
+            icon: Icon(Icons.chat, size: 16,color:   ThemeColor.blackColor,),
+            label: Text('Chat', style: TextStyle(fontSize: 12,color:   ThemeColor.blackColor,)),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              backgroundColor: ThemeColor.textWhiteColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               elevation: 4,
             ),
@@ -41,10 +37,10 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
           SizedBox(width: 8),
           ElevatedButton.icon(
             onPressed:  () {} ,
-            icon: Icon(Icons.call, size: 16,color:  Colors.black , ),
-            label: Text('Call', style: TextStyle(fontSize: 12,color:   Colors.black ,)),
+            icon: Icon(Icons.call, size: 16,color:  ThemeColor.blackColor, ),
+            label: Text('Call', style: TextStyle(fontSize: 12,color:   ThemeColor.blackColor ,)),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              backgroundColor: ThemeColor.textWhiteColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               elevation: 4,
             ),
@@ -52,10 +48,10 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
           SizedBox(width: 8),
           ElevatedButton.icon(
             onPressed:  () {} ,
-            icon: Icon(Icons.videocam, size: 16,color:   Colors.black ),
-            label: Text('Video', style: TextStyle(fontSize: 12,color:  Colors.black ,)),
+            icon: Icon(Icons.videocam, size: 16,color:   ThemeColor.blackColor ),
+            label: Text('Video', style: TextStyle(fontSize: 12,color:  ThemeColor.blackColor ,)),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              backgroundColor: ThemeColor.textWhiteColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               elevation: 4,
             ),
@@ -70,11 +66,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AstroProfileScreen(),
-                      ));
+                  Get.to(()=>AstroProfileScreen());
                 },
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -103,7 +95,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                   SizedBox(height: 8),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: ThemeColor.astroGreen,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     padding: const EdgeInsets.symmetric(
@@ -112,11 +104,11 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.star,
-                                            color: Colors.white, size: 14),
+                                            color: ThemeColor.textWhiteColor, size: 14),
                                         SizedBox(width: 4),
                                         Text('4.5',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: ThemeColor.textWhiteColor,
                                                 fontSize: 12)),
                                       ],
                                     ),
@@ -141,26 +133,26 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Icon(Icons.more_vert, color: Colors.grey),
+                                      Icon(Icons.more_vert, color: ThemeColor.greyColor),
                                     ],
                                   ),
                                   SizedBox(height: 8),
                                   Text(
                                       'Specialized in: Vedic Astrology, Tarot Reading',
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.grey)),
+                                          fontSize: 12, color: ThemeColor.greyColor)),
                                   SizedBox(height: 4),
                                   Text('Languages: English, Hindi',
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.grey)),
+                                          fontSize: 12, color: ThemeColor.greyColor)),
                                   SizedBox(height: 4),
                                   Text('Experience: 5 Years',
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.grey)),
+                                          fontSize: 12, color: ThemeColor.greyColor)),
                                   SizedBox(height: 4),
                                   Text('Fee: ₹500/session',
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.grey)),
+                                          fontSize: 12, color: ThemeColor.greyColor)),
                                   SizedBox(height: 8),
                                 ],
                               ),
@@ -174,15 +166,15 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                               icon: Icon(
                                 Icons.chat,
                                 size: 16,
-                                color: Colors.black,
+                                color: ThemeColor.blackColor,
                               ),
                               label: Text('Chat',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: Colors.black,
+                                    color: ThemeColor.blackColor,
                                   )),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
+                                backgroundColor: ThemeColor.textWhiteColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 elevation: 4,
@@ -194,15 +186,15 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                               icon: Icon(
                                 Icons.call,
                                 size: 16,
-                                color: Colors.black,
+                                color: ThemeColor.blackColor,
                               ),
                               label: Text('60k',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: Colors.black,
+                                    color: ThemeColor.blackColor,
                                   )),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
+                                backgroundColor: ThemeColor.textWhiteColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 elevation: 4,
@@ -212,14 +204,14 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                             ElevatedButton.icon(
                               onPressed: () {},
                               icon: Icon(Icons.videocam,
-                                  size: 16, color: Colors.black),
+                                  size: 16, color: ThemeColor.blackColor),
                               label: Text('35k',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: Colors.black,
+                                    color: ThemeColor.blackColor,
                                   )),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
+                                backgroundColor: ThemeColor.textWhiteColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 elevation: 4,
@@ -257,7 +249,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                         _isExpanded
                             ? 'This astrologer specializes in Vedic Astrology and Tarot Reading. With over 5 years of experience, they provide detailed and accurate readings for various life aspects, including career, relationships, health, and personal growth. They also offer online consultations and have built a loyal following of clients who trust their insights.'
                             : 'This astrologer specializes in Vedic Astrology and Tarot Reading. With over 5 years of experience, they provide detailed and accurate readings...',
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                        style: TextStyle(fontSize: 14, color: ThemeColor.greyColor),
                         maxLines: _isExpanded
                             ? null
                             : 3, // Truncate text if not expanded
@@ -277,7 +269,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                         child: Text(
                           _isExpanded ? 'See Less' : 'See More',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: ThemeColor.blueColor,
                             fontSize: 14,
                           ),
                         ),
@@ -310,7 +302,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                             '$averageRating/5',
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.orange,
+                              color: ThemeColor.amberColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -334,7 +326,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                       //           ),
                       //           Text(
                       //             '${entry.value} reviews',
-                      //             style: TextStyle(fontSize: 12, color: Colors.grey),
+                      //             style: TextStyle(fontSize: 12, color: ThemeColor.greyColor),
                       //           ),
                       //         ],
                       //       ),
@@ -383,12 +375,12 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                       Row(
                                         children: [
                                           Icon(Icons.star,
-                                              size: 14, color: Colors.orange),
+                                              size: 14, color: ThemeColor.amberColor),
                                           Text(
                                             ' ${reviews[index]['rating']} / 5',
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: Colors.grey,
+                                              color: ThemeColor.greyColor,
                                             ),
                                           ),
                                         ],
@@ -397,7 +389,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                         reviews[index]['review']!,
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.grey,
+                                          color: ThemeColor.greyColor,
                                         ),
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
@@ -409,7 +401,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                                         child: Text(
                                           'See More',
                                           style: TextStyle(
-                                              color: Colors.blue, fontSize: 12),
+                                              color: ThemeColor.blueColor, fontSize: 12),
                                         ),
                                       ),
                                     ],
@@ -427,7 +419,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
               SizedBox(height: 10),
               CustomText(
                 text: 'Similar Astrologer',
-                color: Colors.black,
+                color: ThemeColor.blackColor,
               ),
               SizedBox(height: 10),
               SizedBox(
@@ -459,7 +451,7 @@ class _AstroProfileScreenState extends State<AstroProfileScreen> {
                             SizedBox(height: 4),
                             Text(
                               '₹500/min',
-                              style: TextStyle(fontSize: 12, color: Colors.grey),
+                              style: TextStyle(fontSize: 12, color: ThemeColor.greyColor),
                             ),
                           ],
                         ),

@@ -1,190 +1,95 @@
-import 'package:new_astro/widgets/custom_btn.dart';
-import 'package:new_astro/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:new_astro/screens/feedback_screen/controller.dart';
+import 'package:new_astro/utils/theme_color.dart';
+import 'package:new_astro/utils/custom_textfield.dart';
+import 'package:new_astro/widgets/custom_appbar.dart';
 
-import '../../utils/color_resource.dart';
-
-class FeedbackScreen extends StatefulWidget {
-  @override
-  _FeedbackScreenState createState() => _FeedbackScreenState();
-}
-
-class _FeedbackScreenState extends State<FeedbackScreen> {
-  String _selectedOption = "Feedback"; // Default selection
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _contactNumberController = TextEditingController();
-  final TextEditingController _subjectController = TextEditingController();
-  final TextEditingController _issueTypeController = TextEditingController();
-  final TextEditingController _suggestionBoxController = TextEditingController();
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _contactNumberController.dispose();
-    _subjectController.dispose();
-    _issueTypeController.dispose();
-    _suggestionBoxController.dispose();
-    super.dispose();
-  }
-
-  Widget _buildFeedbackForm() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: "Email"),
-        TextField(
-          controller: _emailController,
-          decoration: InputDecoration(
-            labelText: 'Email',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Contact Number"),
-        TextField(
-          controller: _contactNumberController,
-          decoration: InputDecoration(
-            labelText: 'Contact Number',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "I suggest you"),
-        TextField(
-          controller: _suggestionBoxController,
-          decoration: InputDecoration(
-            labelText: 'I suggest you',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Suggestion Box"),
-        TextField(
-          controller: _suggestionBoxController,
-          maxLines: 4,
-          decoration: InputDecoration(
-            labelText: 'Suggestion Box',
-            border: OutlineInputBorder(),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildContactSupportForm() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: "Email"),
-        TextField(
-          controller: _emailController,
-          decoration: InputDecoration(
-            labelText: 'Email',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Contact Number"),
-        TextField(
-          controller: _contactNumberController,
-          decoration: InputDecoration(
-            labelText: 'Contact Number',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Subject"),
-        TextField(
-          controller: _subjectController,
-          decoration: InputDecoration(
-            labelText: 'Subject',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Issue Type"),
-        TextField(
-          controller: _issueTypeController,
-          decoration: InputDecoration(
-            labelText: 'Issue Type',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 16),
-        CustomText(text: "Suggestion Box"),
-        TextField(
-          controller: _suggestionBoxController,
-          maxLines: 4,
-          decoration: InputDecoration(
-            labelText: 'Suggestion Box',
-            border: OutlineInputBorder(),
-          ),
-        ),
-      ],
-    );
-  }
+class FeedbackScreen extends StatelessWidget {
+  final controller = Get.put(FeedbackController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Feedback & Support'),
-        backgroundColor: ThemeColor.primaryColor,
-      ),
+      backgroundColor: ThemeColor.backgroundColor,
+      appBar: customAppBar(tittle: 'Feedback & Support', backButton: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomText(text: "Type"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: RadioListTile(
-                    value: "Feedback",
-                    groupValue: _selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedOption = value!;
-                      });
-                    },
-                    title: Text('Feedback'),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text("Type", style: TextStyle(fontWeight: FontWeight.bold)),
+              Obx(() => Row(
+                    children: [
+                      Radio(
+                          value: "Contact Support",
+                          groupValue: controller.selectedType.value,
+                          onChanged: (value) =>
+                              controller.selectedType.value = value.toString(),
+                          activeColor: ThemeColor.redColor),
+                      Text("Contact Support"),
+                      SizedBox(width: 20),
+                      Radio(
+                          value: "Feedback",
+                          groupValue: controller.selectedType.value,
+                          onChanged: (value) =>
+                              controller.selectedType.value = value.toString(),
+                          activeColor: ThemeColor.redColor),
+                      Text("Feedback"),
+                    ],
+                  )),
+              SizedBox(height: 10),
+              customTextField(
+                  label: "Email",
+                  hint: "Enter your email id",
+                  txtController: controller.emailController),
+              customTextField(
+                  label: "Contact Number",
+                  hint: "Enter your contact number",
+                  txtController: controller.contactNumberController),
+              if (controller.selectedType.value == 'Contact Support')
+                Obx(() {
+                  if (controller.selectedType.value == 'Contact Support') {
+                    return customTextField(
+                        label: "Subject",
+                        hint: "Message subject",
+                        txtController: controller.subjectController);
+                  } else {
+                    return SizedBox.shrink(); // Hide when not needed
+                  }
+                }),
+              customTextField(
+                  label: "Issue Type",
+                  hint: "Select option",
+                  isDropDown: true,
+                  onSelect: (value) =>
+                      controller.selectedIssueType.value = value),
+              customTextField(
+                  label: "Suggestion Box",
+                  hint: "How can we help you today?",
+                  maxLines: 6,
+                  txtController: controller.suggestionBoxController),
+              SizedBox(height: 20),
+              InkWell(
+                onTap: () {
+                  print(
+                      "Feedback Submitted: ${controller.emailController.text}");
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 100),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  decoration: BoxDecoration(
+                      color: ThemeColor.warningColor,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Text("Send Message",
+                      style: TextStyle(color: ThemeColor.lightBlackColor.withOpacity(.4))),
                 ),
-                Expanded(
-                  child: RadioListTile(
-                    value: "Contact Support",
-                    groupValue: _selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedOption = value!;
-                      });
-                    },
-                    title: Text('Contact Support'),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-            Expanded(
-              child: SingleChildScrollView(
-                child: _selectedOption == "Feedback"
-                    ? _buildFeedbackForm()
-                    : _buildContactSupportForm(),
               ),
-            ),
-            SizedBox(height: 16),
-            CustomButton(text: "Submit",  onPressed: () {
-              // Submit button action
-              if (_selectedOption == "Feedback") {
-                print('Feedback submitted: ${_emailController.text}');
-              } else {
-                print('Contact Support submitted: ${_subjectController.text}');
-              }
-            }, backgroundColor: ThemeColor.primaryColor,),
-
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../utils/color_resource.dart';
+import '../utils/theme_color.dart';
 
 PreferredSizeWidget customAppBar({String? tittle, bool backButton = false}) {
   return PreferredSize(
@@ -32,13 +32,15 @@ PreferredSizeWidget customAppBar({String? tittle, bool backButton = false}) {
                           Get.back();
                         },
                         child: Image(
-                            image: AssetImage('assets/icon/back_icon.png'),
-                            color: Colors.white)),
+                          image: AssetImage('assets/icon/back_icon.png'),
+                          color: ThemeColor.textWhiteColor,
+                          height: 22,
+                        )),
                   SizedBox(width: backButton ? 20 : 50),
                   Text(
                     '$tittle',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeColor.textWhiteColor,
                         fontSize: 19,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.bold),

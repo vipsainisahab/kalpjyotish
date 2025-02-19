@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:new_astro/utils/theme_color.dart';
 
 class BackgroundScreen extends StatelessWidget {
   const BackgroundScreen({super.key, required this.child});
- final Widget child;
 
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ThemeColor.textWhiteColor,
       body: Stack(
         children: [
           Positioned(
@@ -18,13 +18,15 @@ class BackgroundScreen extends StatelessWidget {
             child: Container(
               width: 180, // Diameter (2 * radius)
               height: 180,
-              decoration: const BoxDecoration(
-                color: Colors.amber,
+              decoration: BoxDecoration(
+                color: ThemeColor.amberColor,
                 shape: BoxShape.circle,
               ),
             ),
           ),
-          Container( child: child,)
+          Container(
+            child: child,
+          )
         ],
       ),
     );

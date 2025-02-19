@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_astro/utils/theme_color.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -27,7 +28,7 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
-        color: color ?? Colors.black,
+        color: color ?? ThemeColor.blackColor,
       ),
       textAlign: textAlign,
       overflow: overflow,

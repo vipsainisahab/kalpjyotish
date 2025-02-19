@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_astro/screens/auth/login_screen.dart';
 
-import '../../utils/color_resource.dart';
+import '../../utils/theme_color.dart';
 import '../dashboard/dashboard_screen.dart';
 import '../login/login_screen.dart';
 

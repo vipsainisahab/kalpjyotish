@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:new_astro/utils/theme_color.dart';
 import '../auth/otp_screen.dart';
-import '../dashboard/dashboard_screen.dart';
 import 'login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ThemeColor.textWhiteColor,
       body: SingleChildScrollView(
           child: Stack(
         children: [
@@ -54,22 +54,22 @@ class LoginScreen extends StatelessWidget {
                     const Text(
                       'Hi Welcome!',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeColor.textWhiteColor,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Text(
+                    Text(
                       'Submit your Mobile number',
-                      style: TextStyle(color: Colors.white70),
+                      style: TextStyle(color: ThemeColor.textWhite70Color),
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         Expanded(
                           child: Divider(
-                            color: Colors.white70,
+                            color: ThemeColor.textWhite70Color,
                             thickness: 1,
                           ),
                         ),
@@ -78,12 +78,12 @@ class LoginScreen extends StatelessWidget {
                           child: Text(
                             'Log in or Sign up',
                             style:
-                                TextStyle(color: Colors.white70, fontSize: 14),
+                                TextStyle(color: ThemeColor.textWhite70Color, fontSize: 14),
                           ),
                         ),
                         Expanded(
                           child: Divider(
-                            color: Colors.white70,
+                            color: ThemeColor.textWhite70Color,
                             thickness: 1,
                           ),
                         ),
@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber,
+                          backgroundColor: ThemeColor.amberColor,
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -113,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: ThemeColor.blackColor,
                           ),
                         ),
                       ),
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                     const Center(
                       child: Text(
                         'By signing up, you agree to our Terms of Use and Privacy Policy',
-                        style: TextStyle(color: Colors.white70, fontSize: 10.6),
+                        style: TextStyle(color: ThemeColor.textWhite70Color, fontSize: 10.6),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -141,7 +141,7 @@ class LoginScreen extends StatelessWidget {
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: ThemeColor.textWhiteColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
@@ -178,7 +178,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: ThemeColor.textWhiteColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
@@ -189,7 +189,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: selectedCountryCode,
-              icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
+              icon: const Icon(Icons.keyboard_arrow_down, color: ThemeColor.blackColor),
               items: countries.map((country) {
                 return DropdownMenuItem(
                   value: country['code'], // Use the country code as the value
