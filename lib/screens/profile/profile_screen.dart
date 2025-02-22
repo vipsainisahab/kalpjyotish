@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_astro/screens/test/test.dart';
+import 'package:new_astro/utils/helper.dart';
 
 import '../../utils/theme_color.dart';
 import '../../widgets/custom_btn.dart';
@@ -157,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                           border: Border.all(color: ThemeColor.textWhiteColor, width: 2),
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(
-                              image: NetworkImage(controller.image.toString()),
+                              image: NetworkImage(Helper.image.toString()),
                               fit: BoxFit.cover)),
                     )),
               ],

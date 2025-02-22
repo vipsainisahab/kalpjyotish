@@ -15,6 +15,8 @@ class ThemeColor {
   static const Color textSecondaryColor = Color(0xFF757575); // Grey
   static const Color textHintColor = Color(0xFF9E9E9E); // Light Grey
   static const Color textWhiteColor = Color(0xFFFFFFFF); // Light Grey
+  static const Color aboutTextColor = Color(0xFFFDEFCB);
+  static const Color aboutTextBorder = Color(0xFFF6BC02);
 
   // Use colors
   static const Color amberColor = Color(0xFFFFB900);

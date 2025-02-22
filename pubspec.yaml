@@ -38,6 +38,8 @@ dependencies:
   flutter_native_splash: ^2.4.4
   get: ^4.7.2
   dio: ^5.8.0+1
+  device_info_plus: ^11.3.0
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +95,10 @@ flutter:
         - asset: assets/fonts/Roboto/static/Roboto-Bold.ttf
         - asset: assets/fonts/Roboto/static/Roboto-Black.ttf
         - asset: assets/fonts/Roboto/static/Roboto_SemiCondensed-ThinItalic.ttf
+
+    - family: Roboto_thin
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

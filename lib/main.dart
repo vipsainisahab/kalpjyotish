@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Astra App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: ThemeColor.deepPurple),
-        useMaterial3: true,
-      ),
+      // theme: ThemeData(
+      //   // colorScheme: ColorScheme.fromSeed(seedColor: ThemeColor.deepPurple),
+      //   // useMaterial3: true,
+      // ),
       home: const SplashScreen(),
     );
   }

@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:new_astro/screens/test/test.dart';
+import 'package:new_astro/utils/helper.dart';
 import 'package:new_astro/utils/theme_color.dart';
 import 'package:new_astro/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
-import '../astro/astro_list_screen.dart';
+import '../astro/astro_list/astro_list_screen.dart';
 import '../kundli/kundli_screen.dart';
 import 'controller.dart';
 
@@ -104,7 +105,7 @@ class AstroHomeScreen extends StatelessWidget {
                                     backgroundColor: ThemeColor.primaryColor,
                                     child: CircleAvatar(
                                       radius: 33,
-                                      backgroundImage: NetworkImage(controller
+                                      backgroundImage: NetworkImage(Helper
                                           .image), // Replace with real image
                                     ),
                                   ),
@@ -124,7 +125,8 @@ class AstroHomeScreen extends StatelessWidget {
                                           child: Text(
                                             'Live',
                                             style: TextStyle(
-                                                color: ThemeColor.textWhiteColor,
+                                                color:
+                                                    ThemeColor.textWhiteColor,
                                                 fontSize: 12),
                                           ),
                                         ),
@@ -243,7 +245,7 @@ class AstroHomeScreen extends StatelessWidget {
                                       backgroundColor: ThemeColor.primaryColor,
                                       child: CircleAvatar(
                                         radius: 33,
-                                        backgroundImage: NetworkImage(controller
+                                        backgroundImage: NetworkImage(Helper
                                             .image), // Replace with real image
                                       ),
                                     ),
@@ -265,7 +267,8 @@ class AstroHomeScreen extends StatelessWidget {
                                                 Icon(
                                                   Icons.star_border,
                                                   size: 12,
-                                                  color: ThemeColor.textWhiteColor,
+                                                  color:
+                                                      ThemeColor.textWhiteColor,
                                                 ),
                                                 SizedBox(
                                                   width: 4,
@@ -273,7 +276,8 @@ class AstroHomeScreen extends StatelessWidget {
                                                 Text(
                                                   '5',
                                                   style: TextStyle(
-                                                      color: ThemeColor.textWhiteColor,
+                                                      color: ThemeColor
+                                                          .textWhiteColor,
                                                       fontSize: 12),
                                                 ),
                                               ],
@@ -295,7 +299,8 @@ class AstroHomeScreen extends StatelessWidget {
                                 Text(
                                   '₹500/min',
                                   style: TextStyle(
-                                      fontSize: 12, color: ThemeColor.textSecondaryColor),
+                                      fontSize: 12,
+                                      color: ThemeColor.textSecondaryColor),
                                 ),
                                 SizedBox(height: 10),
                                 CustomButton(
@@ -391,7 +396,8 @@ class AstroHomeScreen extends StatelessWidget {
                                 Text(
                                   '₹500/min',
                                   style: TextStyle(
-                                      fontSize: 12, color: ThemeColor.textSecondaryColor),
+                                      fontSize: 12,
+                                      color: ThemeColor.textSecondaryColor),
                                 ),
                               ],
                             ),
@@ -443,7 +449,8 @@ class AstroHomeScreen extends StatelessWidget {
                                     'Details about the transit event.',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: ThemeColor.textWhiteColor.withOpacity(0.8),
+                                      color: ThemeColor.textWhiteColor
+                                          .withOpacity(0.8),
                                     ),
                                   ),
                                   SizedBox(height: 8),
@@ -452,8 +459,9 @@ class AstroHomeScreen extends StatelessWidget {
                                     child: TextButton(
                                       onPressed: () {},
                                       child: Text('View All',
-                                          style:
-                                              TextStyle(color: ThemeColor.textWhiteColor)),
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeColor.textWhiteColor)),
                                     ),
                                   ),
                                 ],
@@ -533,7 +541,8 @@ class AstroHomeScreen extends StatelessWidget {
               ],
             ),
             padding: EdgeInsets.all(15),
-            child: Image(image: AssetImage(image)),
+            child:
+                Image(image: AssetImage(image), color: ThemeColor.astroGreen),
           ),
           SizedBox(height: 12),
           Text(
