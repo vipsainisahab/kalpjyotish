@@ -84,7 +84,7 @@ class AstroProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Card(
-              color: ThemeColor.textWhiteColor,
+              color: ThemeColor.whiteColor,
               margin: EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 children: [
@@ -92,12 +92,12 @@ class AstroProfileScreen extends StatelessWidget {
                   Obx(
                     () => SizedBox(
                       height: controller.isOpenAllReview.value
-                          ? Get.size.height * .32
-                          : Get.size.height * .6,
+                          ? Get.size.height * .52
+                          : Get.size.height * .31,
                       child: ListView.builder(
                         itemCount: controller.isOpenAllReview.value
-                            ? 3
-                            : controller.reviews.length,
+                            ? controller.reviews.length
+                            : 3,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           final review = controller.reviews[index];
@@ -131,47 +131,10 @@ class AstroProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Text('Similar Astrologer'),
+            _buildReportBox(),
             SizedBox(height: 10),
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Card(
-                    margin: EdgeInsets.only(right: 10, bottom: 4),
-                    elevation: 4,
-                    child: Container(
-                      width: 120,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            children: [
-                              Image.asset(
-                                  height: 100, 'assets/images/horoscop.png'),
-                            ],
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Astrologer ${index + 1}',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            '₹500/min',
-                            style: TextStyle(
-                                fontSize: 12, color: ThemeColor.greyColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            _similarAstro(),
+            SizedBox(height: 30),
           ],
         ),
       ),
@@ -351,7 +314,7 @@ class AstroProfileScreen extends StatelessWidget {
             name: 'Watch Intro',
             isOnline: astrologer.isOnline,
             onOnline: () {
-              Get.to(() => MyApptttt());
+              // Get.to(() => SuccessScreen());
             },
           ),
         ],
@@ -474,6 +437,191 @@ class AstroProfileScreen extends StatelessWidget {
         ),
         Divider()
       ],
+    );
+  }
+
+  Widget _buildReportBox() {
+    return Container(
+      height: Get.size.height * .28,
+      margin: EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+          color: ThemeColor.whiteColor,
+          boxShadow: [
+            BoxShadow(
+              color: ThemeColor.greyColor.withOpacity(.5),
+              blurRadius: 4,
+              offset: Offset(0, 0),
+            ),
+          ],
+          borderRadius: BorderRadius.circular(12)),
+      child: Column(
+        children: [
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+              color: ThemeColor.deepPurple.withOpacity(.1),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              ),
+              border: Border(bottom: BorderSide(color: ThemeColor.deepPurple)),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ThemeColor.deepPurple.withOpacity(.2)),
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child:
+                      Icon(Icons.paste, size: 20, color: ThemeColor.blue2Color),
+                ),
+                Text(
+                  'Report',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                Spacer(),
+                Text(
+                  '₹2923 - ',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                Text(
+                  '₹5547',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                SizedBox(width: 12)
+              ],
+            ),
+          ),
+          SizedBox(height: 8),
+          _reportBoxText(text: 'Saturn Transit Report', price: '3566'),
+          _reportBoxText(text: '1 Year Education Report', price: '3566'),
+          _reportBoxText(
+              text: '1 Year Professional (career) Report', price: '3566'),
+          Spacer(),
+          InkWell(
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: ThemeColor.deepPurple.withOpacity(.8)),
+              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 7),
+              child: Text('View all',
+                  style: TextStyle(color: ThemeColor.textWhiteColor)),
+            ),
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+  }
+
+  Widget _reportBoxText({text, price}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      child: Row(
+        children: [
+          Text(
+            '$text',
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+          ),
+          Spacer(),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+            decoration: BoxDecoration(
+                border: Border.all(color: ThemeColor.primaryColor),
+                borderRadius: BorderRadius.circular(8)),
+            child: Text('₹$price', style: TextStyle(fontSize: 16)),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _similarAstro() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      child: Container(
+        height: Get.size.height * .35,
+        width: Get.size.width * .95,
+        padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
+        decoration: BoxDecoration(
+          color: Color(0xFFFFF2F0),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: ThemeColor.greyColor.withOpacity(.5),
+              blurRadius: 4,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Check Similar Consultants',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                Spacer(),
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: Color(0xFFF6BCBC)),
+                  padding: EdgeInsets.all(10),
+                  child: Text('i',
+                      style: TextStyle(
+                          fontSize: 16, color: ThemeColor.blackColor)),
+                ),
+              ],
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _similarAstroProfile(
+                      image:
+                          'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+                      name: 'Acharya',
+                      price: '40/min'),
+                  _similarAstroProfile(
+                      image:
+                          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e',
+                      name: 'Dharmik',
+                      price: '50/min'),
+                  _similarAstroProfile(
+                      image:
+                          'https://images.unsplash.com/photo-1541823709867-1b206113eafd',
+                      name: 'Sujoy sen',
+                      price: '90/min'),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _similarAstroProfile({image, name, price}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      child: Column(
+        children: [
+          Container(
+            height: Get.size.height * .2,
+            width: Get.size.width * .3,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(image: NetworkImage('$image'))),
+            // child: ,
+          ),
+          SizedBox(height: 12),
+          Text('$name',
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+          Text('₹$price'),
+        ],
+      ),
     );
   }
 }

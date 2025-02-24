@@ -61,7 +61,8 @@ class OtpScreen extends StatelessWidget {
                   // Subheading
                   Text(
                     'A 4-digit code has been sent to your number',
-                    style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
+                    style: TextStyle(
+                        fontSize: 13, color: ThemeColor.textWhiteColor),
                   ),
                   SizedBox(height: 10),
 
@@ -69,7 +70,8 @@ class OtpScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       '0:58',
-                      style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
+                      style: TextStyle(
+                          fontSize: 13, color: ThemeColor.textWhiteColor),
                     ),
                   ),
                   SizedBox(height: 5),
@@ -154,10 +156,12 @@ class OtpScreen extends StatelessWidget {
                     onPressed: () {
                       print('Continue with Email Pressed');
                     },
-                    icon: Icon(Icons.mobile_screen_share, color: ThemeColor.textWhiteColor),
+                    icon: Icon(Icons.mobile_screen_share,
+                        color: ThemeColor.textWhiteColor),
                     label: Text(
                       'Change Mobile Number',
-                      style: TextStyle(fontSize: 13, color: ThemeColor.textWhiteColor),
+                      style: TextStyle(
+                          fontSize: 13, color: ThemeColor.textWhiteColor),
                     ),
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: ThemeColor.textWhiteColor),

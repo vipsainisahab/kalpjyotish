@@ -21,9 +21,11 @@ class ThemeColor {
   // Use colors
   static const Color amberColor = Color(0xFFFFB900);
   static const Color homeScreenColor = Color(0xFFF4F4F4);
+  static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color astroGreen = Color(0xFF157B11); // Green
   static const Color deepPurple = Color(0xFF673AB7); // Purple
   static const Color blueColor = Color(0xFF2196F3); // blue
+  static const Color blue2Color = Color(0xFF6046F4); // blue
   static const Color redColor = Color(0xFFC62828); // Red
   static const MaterialColor greyColor = Colors.grey; // grey
   static const Color blackColor = Color(0xFF000000); // Black

@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       //   // colorScheme: ColorScheme.fromSeed(seedColor: ThemeColor.deepPurple),
       //   // useMaterial3: true,
       // ),
+      // theme: ThemeData(fontFamily: 'Roboto'),
       home: const SplashScreen(),
     );
   }
